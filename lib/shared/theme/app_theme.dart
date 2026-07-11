@@ -17,6 +17,7 @@ abstract final class AppTheme {
     brightness: Brightness.dark,
     useMaterial3: true,
     fontFamily: AppTypography.fontFamily,
+    fontFamilyFallback: AppTypography.fontFamilyFallback,
     colorScheme: const ColorScheme.dark(
       primary: AppColors.brand,
       onPrimary: AppColors.background,

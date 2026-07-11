@@ -97,6 +97,7 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(find.byType(SimpleDialog), findsOneWidget);
+        expect(find.text('简体中文'), findsOneWidget);
       });
 
       testWidgets('tapping Content Language opens picker dialog',

@@ -7,11 +7,12 @@ void main() {
       expect(kTmdbContentLanguages, isNotEmpty);
     });
 
-    test('содержит en-US и ru-RU', () {
+    test('содержит en-US, ru-RU и zh-CN', () {
       final Iterable<String> codes =
           kTmdbContentLanguages.map((TmdbContentLanguage l) => l.code);
       expect(codes, contains('en-US'));
       expect(codes, contains('ru-RU'));
+      expect(codes, contains('zh-CN'));
     });
 
     test('коды уникальны', () {
@@ -46,6 +47,10 @@ void main() {
       expect(defaultContentLanguageForUi('ru'), 'ru-RU');
     });
 
+    test('zh → zh-CN', () {
+      expect(defaultContentLanguageForUi('zh'), 'zh-CN');
+    });
+
     test('неизвестная локаль → en-US (fallback)', () {
       expect(defaultContentLanguageForUi('xx'), 'en-US');
       expect(defaultContentLanguageForUi(''), 'en-US');
@@ -55,7 +60,7 @@ void main() {
       final Set<String> available = kTmdbContentLanguages
           .map((TmdbContentLanguage l) => l.code)
           .toSet();
-      for (final String ui in <String>['en', 'ru', 'unknown']) {
+      for (final String ui in <String>['en', 'ru', 'zh', 'unknown']) {
         expect(available, contains(defaultContentLanguageForUi(ui)));
       }
     });
